@@ -1,0 +1,411 @@
+/* ==========================================================================
+   GLITCH — Game Studio Landing Page
+   Global stylesheet: tokens, reset, shared utilities
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---- Color tokens ---- */
+  --bg-void:        #060514;
+  --bg-deep:        #0a0820;
+  --bg-panel:       #100c2c;
+  --bg-panel-soft:  rgba(124, 92, 255, 0.06);
+
+  --accent-blue:    #3ec8f0;
+  --accent-cyan:    #5fe3ff;
+  --accent-purple:  #8b5cf6;
+  --accent-violet:  #b06aff;
+  --accent-pink:    #d65fd1;
+
+  --grad-brand:     linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+  --grad-text:      linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-violet) 100%);
+  --grad-glow:      radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, rgba(139, 92, 246, 0) 70%);
+
+  --text-primary:   #f3f1fb;
+  --text-secondary: #b9b3d6;
+  --text-muted:     #7d76a3;
+  --text-label:     #9d7bff;
+
+  --border-soft:    rgba(139, 92, 246, 0.35);
+  --border-faint:   rgba(139, 92, 246, 0.15);
+
+  /* ---- Type tokens ---- */
+  --font-display: 'Orbitron', 'Space Grotesk', sans-serif;
+  --font-body:    'Space Grotesk', sans-serif;
+
+  /* ---- Layout tokens ---- */
+  --max-width: 1240px;
+  --section-pad-y: 7rem;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --shadow-glow-blue: 0 0 24px rgba(62, 200, 240, 0.35);
+  --shadow-glow-purple: 0 0 28px rgba(139, 92, 246, 0.4);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, h4, p { margin: 0; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- Starfield background, sits behind every section ---- */
+.app-shell {
+  position: relative;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(99, 70, 220, 0.25), transparent),
+    var(--bg-void);
+}
+
+.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 70% 15%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 85% 60%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(2px 2px at 10% 80%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 45% 45%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 60% 90%, rgba(255,255,255,0.3), transparent);
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+/* ---- Section numbering eyebrow (02 / 03 / 04 — matches source design) ---- */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  background: var(--bg-panel-soft);
+  margin-bottom: 0.9rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    
+    color: #8b5cf6;
+}
+
+.section-subtitle {
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-left: 3.2rem;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--grad-brand);
+  color: #08071a;
+  box-shadow: var(--shadow-glow-purple);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 36px rgba(139, 92, 246, 0.55);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--border-soft);
+  color: var(--text-primary);
+}
+
+.btn-outline:hover {
+  background: var(--bg-panel-soft);
+  border-color: var(--accent-cyan);
+}
+
+.btn-icon {
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+.btn:hover .btn-icon { transform: translateX(3px); }
+
+/* ---- Gradient placeholder utility (stands in for real artwork) ---- */
+.gradient-placeholder {
+  width: 100%;
+  height: 100%;
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---- Floating label chips (CREATE / PLAY / INSPIRE style) ---- */
+.floating-label {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-blue);
+  opacity: 0.55;
+  text-transform: uppercase;
+  line-height: 1.7;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---- Focus visibility ---- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.portfolio-card__art {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+    .portfolio-card__art img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ensures image fills nicely */
+        display: block;
+    }
+/* ==========================================================================
+   The Ultimate Background Sandwich Layering
+   ========================================================================== */
+
+/* Layer 0: The Base structural canvas container */
+.video-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -100; /* Pushed all the way to the very bottom */
+    overflow: hidden;
+    pointer-events: none; /* Let clicks pass right through to your content */
+}
+
+/* Layer 1: The moving video itself */
+.video-bg-element {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    transform: translate3d(-50%, 0, 0);
+    will-change: transform;
+    z-index: 1; /* Lowest child inside the container */
+}
+
+/* Layer 2: The Black 20% Overlay covering the entire viewport */
+.video-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Sits directly ON TOP of the video (Layer 1) */
+    /* Pure black with exactly 20% opacity */
+    background-color: rgba(0, 0, 0, .8);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Layer 3: The Interactive Web Content (On Top of Everything)
+   ========================================================================== */
+
+/* Force all structural Blazor layout wrappers to be completely transparent 
+   so they don't block the video stack underneath them */
+.app-shell, main, #app {
+    background: transparent !important;
+    position: relative;
+    z-index: 10; /* High z-index explicitly lifts the text above Layer 2 */
+}
+
+/* Ensure your individual components/sections don't have default white/gray backgrounds */
+section, header, footer {
+    position: relative;
+    z-index: 20;
+    background: transparent !important;
+}
+
+
+/*-----------------------------------WebGL page Styling ---------------------------------*/
+
+.game-container-shell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    padding: 2rem 1rem;
+    color: #fff;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.game-title {
+    font-family: var(--font-display, 'Courier New', monospace);
+    font-weight: 900;
+    font-size: 2.5rem;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.6), 0 0 20px rgba(253, 0, 245, 0.4);
+    text-transform: uppercase;
+}
+
+.game-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #8a8a9e);
+    letter-spacing: 0.05em;
+}
+
+/* Responsive container managing aspect ratio (Typically 16:9 for Unity WebGL) */
+.unity-frame-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 960px; /* Standard desktop build size limit */
+    aspect-ratio: 16 / 9;
+    border: 2px solid rgba(0, 242, 254, 0.3);
+    border-radius: 8px;
+    background: rgba(6, 5, 20, 0.85); /* Dark tint to hide loading pops */
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.15);
+    overflow: hidden;
+}
+
+/* Subtle cyan/magenta glow flashing on the frame edge */
+.frame-glow-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #00f2fe, #fd00f5);
+    z-index: 5;
+}
+
+.unity-webgl-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+/* Adjust layout rules elegantly for smaller screens */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 1.8rem;
+    }
+
+    .unity-frame-wrapper {
+        max-width: 100%;
+        border-radius: 4px;
+    }
+}
+
+/*------- Console Image Styling -------*/
+/* Define placeholder box constraints */
+.Console-placeholder {
+    width: 100%;
+    max-width:350px;
+    height: 350px;
+    overflow: hidden; /* Prevents image from spilling outside the div */
+    position:absolute;
+}
+
+    /* Ensure the image fills the container beautifully */
+    .Console-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Crops the image proportionally to fill the space without stretching */
+    }
+
+    /*------your console video placeholder------*/
+
+.your-box {
+    position: relative;
+    overflow: hidden;
+}
+
+    .your-box video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* crops to fill — change to "contain" to letterbox */
+    }
