@@ -4,7 +4,35 @@
   "installCommand": null,
   "rewrites": [
     {
-      "source": "/((?!_framework|_content|css|js|images|games|videos|favicon\\.ico|index\\.html|GlitchStudio).*)",
+      "source": "/games/:path*",
+      "destination": "/games/:path*"
+    },
+    {
+      "source": "/videos/:path*",
+      "destination": "/videos/:path*"
+    },
+    {
+      "source": "/_framework/:path*",
+      "destination": "/_framework/:path*"
+    },
+    {
+      "source": "/_content/:path*",
+      "destination": "/_content/:path*"
+    },
+    {
+      "source": "/css/:path*",
+      "destination": "/css/:path*"
+    },
+    {
+      "source": "/js/:path*",
+      "destination": "/js/:path*"
+    },
+    {
+      "source": "/images/:path*",
+      "destination": "/images/:path*"
+    },
+    {
+      "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
     }
   ],
@@ -69,19 +97,6 @@
       ]
     },
     {
-      "source": "/games/Build/(.*)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/octet-stream"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
-      ]
-    },
-    {
       "source": "/games/Build/(.*\\.js)",
       "headers": [
         {
@@ -109,6 +124,19 @@
     },
     {
       "source": "/games/Build/(.*\\.data)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/games/Build/(.*)",
       "headers": [
         {
           "key": "Content-Type",
