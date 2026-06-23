@@ -8,7 +8,7 @@
     <base href="/" />
     <link href="css/site.css" rel="stylesheet" />
 
-    <link href="_framework/dotnet.r91blz12xy.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" integrity="sha256-0fOEkgFEB4aToK/jp+7C4HI/qhIR8ae5ikxK5mbsLUo=" />
+    <link href="_framework/dotnet.r91blz12xy.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" />
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -20,17 +20,7 @@
     "./_framework/dotnet.js": "./_framework/dotnet.r91blz12xy.js",
     "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.a6jcqbs390.js"
   },
-  "scopes": {},
-  "integrity": {
-    "./_framework/blazor.webassembly.958z1vx7fr.js": "sha256-A59Tr9HqEhHMu8kU7kruLI9ayw5MRS6Lvc6z7jCbghk=",
-    "./_framework/blazor.webassembly.js": "sha256-A59Tr9HqEhHMu8kU7kruLI9ayw5MRS6Lvc6z7jCbghk=",
-    "./_framework/dotnet.js": "sha256-0fOEkgFEB4aToK/jp+7C4HI/qhIR8ae5ikxK5mbsLUo=",
-    "./_framework/dotnet.native.ikrs475e5v.js": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
-    "./_framework/dotnet.native.js": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
-    "./_framework/dotnet.r91blz12xy.js": "sha256-0fOEkgFEB4aToK/jp+7C4HI/qhIR8ae5ikxK5mbsLUo=",
-    "./_framework/dotnet.runtime.a6jcqbs390.js": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M=",
-    "./_framework/dotnet.runtime.js": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M="
-  }
+  "scopes": {}
 }</script>
 </head>
 
@@ -48,7 +38,14 @@
         <a href="." class="reload">Reload</a>
         <span class="dismiss">🗙</span>
     </div>
-    <script src="_framework/blazor.webassembly.958z1vx7fr.js"></script>
+    <script src="_framework/blazor.webassembly.958z1vx7fr.js" autostart="false"></script>
+    <script>
+        Blazor.start({
+            loadBootResource: function (type, name, defaultUri, integrity) {
+                return fetch(defaultUri, { cache: 'no-cache' });
+            }
+        });
+    </script>
 </body>
 
 </html>
