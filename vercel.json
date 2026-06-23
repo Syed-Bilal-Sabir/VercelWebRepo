@@ -97,7 +97,20 @@
       ]
     },
     {
-      "source": "/games/Build/(.*\\.js)",
+      "source": "/games/Build/(.*\\.loader\\.js)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/games/Build/(.*\\.framework\\.js)",
       "headers": [
         {
           "key": "Content-Type",
@@ -124,19 +137,6 @@
     },
     {
       "source": "/games/Build/(.*\\.data)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/octet-stream"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
-      ]
-    },
-    {
-      "source": "/games/Build/(.*)",
       "headers": [
         {
           "key": "Content-Type",
