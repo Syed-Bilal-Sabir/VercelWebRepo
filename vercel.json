@@ -1,6 +1,7 @@
 {
-  "buildCommand": "dotnet publish -c Release -o publish",
-  "outputDirectory": "publish/wwwroot",
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "installCommand": null,
   "rewrites": [
     {
       "source": "/((?!_framework|_content|css|js|images|games|videos|favicon\\.ico|index\\.html).*)",
