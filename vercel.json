@@ -3,205 +3,82 @@
   "outputDirectory": ".",
   "installCommand": null,
   "rewrites": [
-    {
-      "source": "/games/:path*",
-      "destination": "/games/:path*"
-    },
-    {
-      "source": "/videos/:path*",
-      "destination": "/videos/:path*"
-    },
-    {
-      "source": "/_framework/:path*",
-      "destination": "/_framework/:path*"
-    },
-    {
-      "source": "/_content/:path*",
-      "destination": "/_content/:path*"
-    },
-    {
-      "source": "/css/:path*",
-      "destination": "/css/:path*"
-    },
-    {
-      "source": "/js/:path*",
-      "destination": "/js/:path*"
-    },
-    {
-      "source": "/images/:path*",
-      "destination": "/images/:path*"
-    },
-    {
-      "source": "/((?!.*\\.).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/games/Build/:path*", "destination": "/games/Build/:path*" },
+    { "source": "/videos/:path*", "destination": "/videos/:path*" },
+    { "source": "/_framework/:path*", "destination": "/_framework/:path*" },
+    { "source": "/_content/:path*", "destination": "/_content/:path*" },
+    { "source": "/css/:path*", "destination": "/css/:path*" },
+    { "source": "/js/:path*", "destination": "/js/:path*" },
+    { "source": "/images/:path*", "destination": "/images/:path*" },
+    { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
-      "source": "/_framework/(.*)",
+      "source": "/_framework/(.*\\.wasm)",
       "headers": [
-        {
-          "key": "Content-Encoding",
-          "value": "identity"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        },
-        {
-          "key": "Vary",
-          "value": ""
-        }
+        { "key": "Content-Type", "value": "application/wasm" },
+        { "key": "Content-Encoding", "value": "identity" },
+        { "key": "Cache-Control", "value": "no-store" }
       ]
     },
     {
       "source": "/_framework/(.*\\.js)",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        },
-        {
-          "key": "Content-Encoding",
-          "value": "identity"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        },
-        {
-          "key": "Vary",
-          "value": ""
-        }
-      ]
-    },
-    {
-      "source": "/_framework/(.*\\.wasm)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/wasm"
-        },
-        {
-          "key": "Content-Encoding",
-          "value": "identity"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        },
-        {
-          "key": "Vary",
-          "value": ""
-        }
-      ]
-    },
-    {
-      "source": "/games/Build/(.*\\.loader\\.js)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
-      ]
-    },
-    {
-      "source": "/games/Build/(.*\\.framework\\.js)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
+        { "key": "Content-Type", "value": "application/javascript" },
+        { "key": "Content-Encoding", "value": "identity" },
+        { "key": "Cache-Control", "value": "no-store" }
       ]
     },
     {
       "source": "/games/Build/(.*\\.wasm)",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/wasm"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
+        { "key": "Content-Type", "value": "application/wasm" },
+        { "key": "Content-Encoding", "value": "identity" },
+        { "key": "Cache-Control", "value": "no-store" }
       ]
     },
     {
       "source": "/games/Build/(.*\\.data)",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/octet-stream"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
+        { "key": "Content-Type", "value": "application/octet-stream" },
+        { "key": "Content-Encoding", "value": "identity" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/games/Build/(.*\\.js)",
+      "headers": [
+        { "key": "Content-Type", "value": "application/javascript" },
+        { "key": "Cache-Control", "value": "no-store" }
       ]
     },
     {
       "source": "/(.*\\.css)",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/css"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Content-Type", "value": "text/css" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
       "source": "/(.*\\.mp4)",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "video/mp4"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Content-Type", "value": "video/mp4" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
       "source": "/(.*\\.jpg|.*\\.jpeg|.*\\.png|.*\\.gif|.*\\.webp|.*\\.svg)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "Cross-Origin-Embedder-Policy",
-          "value": "require-corp"
-        },
-        {
-          "key": "Cross-Origin-Opener-Policy",
-          "value": "same-origin"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Cross-Origin-Embedder-Policy", "value": "require-corp" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" }
       ]
     }
   ]
