@@ -18,7 +18,11 @@
         },
         {
           "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
+          "value": "no-store"
+        },
+        {
+          "key": "Vary",
+          "value": ""
         }
       ]
     },
@@ -32,6 +36,14 @@
         {
           "key": "Content-Encoding",
           "value": "identity"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "Vary",
+          "value": ""
         }
       ]
     },
@@ -45,6 +57,14 @@
         {
           "key": "Content-Encoding",
           "value": "identity"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "Vary",
+          "value": ""
         }
       ]
     },
