@@ -4,7 +4,7 @@
   "installCommand": null,
   "rewrites": [
     {
-      "source": "/((?!_framework|_content|css|js|images|games|videos|favicon\\.ico|index\\.html).*)",
+      "source": "/((?!_framework|_content|css|js|images|games|videos|favicon\\.ico|index\\.html|GlitchStudio).*)",
       "destination": "/index.html"
     }
   ],
@@ -69,29 +69,54 @@
       ]
     },
     {
-      "source": "/games/(.*\\.js)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        }
-      ]
-    },
-    {
-      "source": "/games/(.*\\.wasm)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/wasm"
-        }
-      ]
-    },
-    {
-      "source": "/games/(.*\\.data)",
+      "source": "/games/Build/(.*)",
       "headers": [
         {
           "key": "Content-Type",
           "value": "application/octet-stream"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/games/Build/(.*\\.js)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/games/Build/(.*\\.wasm)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/games/Build/(.*\\.data)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
         }
       ]
     },
